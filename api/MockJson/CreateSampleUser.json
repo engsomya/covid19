@@ -1,0 +1,10 @@
+{
+    "name": "Suman Mondal",
+    "username": "smondal",
+    "password": "123456",
+    "email": "s@gmail.com",
+    "admin": 1,
+    "location": "Kolkata",
+    "actorType": "Actor 1",
+    "phone": "123456789"
+}
