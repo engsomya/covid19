@@ -16,15 +16,15 @@ export class AppComponent  implements OnInit {
 
     constructor(
         private formBuilder: FormBuilder,
-        private userService: UserService        
+        private userService: UserService
         /*private authenticationService: AuthenticationService,
-        
+
         private alertService: AlertService*/
     ) {
         // redirect to home if already logged in
-        //if (this.authenticationService.currentUserValue) {
+        //  if (this.authenticationService.currentUserValue) {
            // this.router.navigate(['/']);
-        //}
+        //  }
     }
 
     ngOnInit() {
@@ -44,7 +44,7 @@ export class AppComponent  implements OnInit {
         this.submitted = true;
 
         // reset alerts on submit
-        //this.alertService.clear();
+        // this.alertService.clear();
 
         // stop here if form is invalid
         if (this.registerForm.invalid) {
@@ -58,8 +58,8 @@ export class AppComponent  implements OnInit {
             .subscribe(
                 data => {
                   console.log(data);
-                    //this.alertService.success('Registration successful', true);
-                   // this.router.navigate(['/login']);
+                  // this.alertService.success('Registration successful', true);
+                  // this.router.navigate(['/login']);
                 },
                 error => {
                    // this.alertService.error(error);
