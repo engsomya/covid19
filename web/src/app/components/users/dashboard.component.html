@@ -1,1 +1,26 @@
-<p>dashboard works!</p>
+<div class="card text-center m-3">
+    <div class="card-header">
+        See the markers, where people needs your attention
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Google Map</h5>
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="true"
+            (mapClick)="mapClicked($event)">
+
+            <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m.label, i)"
+                [latitude]="m.lat" [longitude]="m.lng" [label]="m.label" [markerDraggable]="m.draggable"
+                (dragEnd)="markerDragEnd(m, $event)">
+
+                <agm-info-window>
+                    <strong>InfoWindow content</strong>
+                </agm-info-window>
+
+            </agm-marker>
+
+        </agm-map>
+        <a href="#" class="btn btn-primary mt-2">Add Crisis Info</a>
+    </div>
+    <div class="card-footer text-muted">
+        Last update about 5 min ago
+    </div>
+</div>
