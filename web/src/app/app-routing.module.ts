@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../app/helpers/auth.guard';
 import { PageNotFoundComponent } from './components/common/page-not-found.component';
 import { HomeComponent } from './components/common/home.component';
@@ -14,7 +14,7 @@ import { MapsComponent } from './components/users/maps.component';
 import { ProfileComponent } from './components/users/profile.component';
 
 const appRoutes: Routes = [
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
@@ -27,9 +27,9 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule,
     BrowserModule,
     FormsModule,
+    CommonModule,  
     ReactiveFormsModule,
     RouterModule.forRoot(
       appRoutes

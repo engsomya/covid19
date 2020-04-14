@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms'; 
 import { ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AgmCoreModule } from '@agm/core';
 
 import { AppComponent } from './app.component';
+import { LoginComponent } from './components/users/login.component';
 import { RegisterComponent } from './components/users/register.component';
 import { PageNotFoundComponent } from './components/common/page-not-found.component';
 import { DashboardComponent } from './components/users/dashboard.component';
@@ -19,7 +22,8 @@ import { FooterComponent } from './components/common/footer.component';
 @NgModule({
     imports: [
         BrowserModule,
-        ReactiveFormsModule,
+        FormsModule,
+        ReactiveFormsModule,        
         HttpClientModule,
         AppRoutingModule,
         AgmCoreModule.forRoot({
@@ -28,6 +32,7 @@ import { FooterComponent } from './components/common/footer.component';
     ],
     declarations: [
         AppComponent,
+        LoginComponent,
         RegisterComponent,
         PageNotFoundComponent,
         DashboardComponent,
