@@ -18,16 +18,19 @@ import { HomeComponent } from './components/common/home.component';
 import { HeaderComponent } from './components/common/header.component';
 import { FooterComponent } from './components/common/footer.component';
 
+// 'AIzaSyACkYvi1c0PxR1LHhwHjoVmwlx5XTWjC7M', // map API keys dev
+// 'AIzaSyCDhjF3LNn2qqYUivCkiyYD8lQMAzihz7I', // FOUND IN GOOGLE, Not to use in prod
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
-        ReactiveFormsModule,        
+        ReactiveFormsModule,
         HttpClientModule,
         AppRoutingModule,
         AgmCoreModule.forRoot({
-          apiKey: 'AIzaSyACkYvi1c0PxR1LHhwHjoVmwlx5XTWjC7M'
+          apiKey: 'AIzaSyCDhjF3LNn2qqYUivCkiyYD8lQMAzihz7I',
+          libraries: ['places']
         })
     ],
     declarations: [

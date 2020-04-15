@@ -1,26 +1,63 @@
-<div class="card text-center m-3">
-    <div class="card-header">
-        See the markers, where people needs your attention
-    </div>
-    <div class="card-body">
-        <h5 class="card-title">Google Map</h5>
-        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="true"
-            (mapClick)="mapClicked($event)">
+<div class="container">
+    <div class="row m-5">
+        <div class="col-9 mapbox">
+            <div class="card text-center mt-3">
+                <div class="card-header">
+                    See the markers, where people needs your attention
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Google Map</h5>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <input placeholder="search for location" autocorrect="off" autocapitalize="off"
+                                spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl">
+                        </div>
+                    </div>
+                    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false"
+                        [zoomControl]="true" (mapClick)="mapClicked($event)" (mapReady)="mapReady($event)">
 
-            <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m.label, i)"
-                [latitude]="m.lat" [longitude]="m.lng" [label]="m.label" [markerDraggable]="m.draggable"
-                (dragEnd)="markerDragEnd(m, $event)">
+                        <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m.label, i)"
+                            [latitude]="m.lat" [longitude]="m.lng" [label]="m.label" [markerDraggable]="m.draggable"
+                            (dragEnd)="markerDragEnd(m, $event)" iconUrl="./assets/images/{{m.color}}-dot.png">
 
-                <agm-info-window>
-                    <strong>InfoWindow content</strong>
-                </agm-info-window>
+                            <agm-info-window>
+                                <div>Help Type: <strong>{{m.type}}</strong></div>
+                                <div>Numbers: <strong>{{m.number}}</strong></div>
+                                <div>Pending since: <strong>2 days</strong></div>
+                            </agm-info-window>
 
-            </agm-marker>
+                        </agm-marker>
 
-        </agm-map>
-        <a href="#" class="btn btn-primary mt-2">Add Crisis Info</a>
-    </div>
-    <div class="card-footer text-muted">
-        Last update about 5 min ago
+                    </agm-map>
+                </div>
+                <!-- <div class="card-footer text-muted">
+                    Last update about 5 min ago
+                </div> -->
+            </div>
+        </div>
+        <div class="col-3 markerbox">
+            <div class="card text-center mt-3">
+                <div class="card-header">
+                    Status <br>
+                    Updated 11 min ago
+                </div>
+                <div class="card-body">
+                    <hr>
+                    <h5 class="card-title">Served</h5>
+                        <p class="card-text">Food: 270</p>
+                        <p class="card-text">Drinking Water: 150</p>
+                        <p class="card-text">Medicine: 200</p>
+                        <p class="card-text">Others: 100</p>
+                    <hr>
+                    <div *ngFor="let m of markers; let i = index" class="float-left m-2">
+                        <img src="./assets/images/{{m.color}}-dot.png" /> {{m.type}}
+                    </div>
+                </div>
+                <hr>
+                <div class="card-footer text-muted">
+                    <a href="javascript:void(0)" class="btn btn-info mt-2">ADD CRISIS INFO</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

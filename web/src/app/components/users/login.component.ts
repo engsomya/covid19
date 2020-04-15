@@ -6,7 +6,7 @@ import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../../services/authentication.service';
 import { AlertService } from '../../services/alert.service';
 
-@Component({ 
+@Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./register.component.css']
@@ -16,8 +16,8 @@ export class LoginComponent implements OnInit {
     loading = false;
     submitted = false;
     returnUrl: string;
-    public email : string;
-    public password : string;
+    public email: string;
+    public password: string;
     constructor(
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
@@ -56,12 +56,12 @@ export class LoginComponent implements OnInit {
         }
 
         this.loading = true;
-        //this.authenticationService.login(this.email, this.password)
-        this.authenticationService.login(this.f.email.value, this.f.password.value)        
+        // this.authenticationService.login(this.email, this.password)
+        this.authenticationService.login(this.f.email.value, this.f.password.value)
             .pipe(first())
             .subscribe(
                 data => {
-                    //this.router.navigate([this.returnUrl]);
+                    // this.router.navigate([this.returnUrl]);
                     this.router.navigate(['/dashboard']);
                 },
                 error => {
