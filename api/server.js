@@ -19,7 +19,7 @@ app.use(function (req, res, next) {
     next();
 
 });
-mongoose.Promise = global.Promise;
+/*mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/cDatabase', {
     useNewUrlParser: true
 }).then(() => {
@@ -27,8 +27,10 @@ mongoose.connect('mongodb://localhost:27017/cDatabase', {
 }).catch(err => {
     console.log('Could not connect to the database. Exiting now...', err);
     process.exit();
-});
+});*/
 
-require('./app/routes/login.routes')(app, {}); app.listen(port, () => {
+require('./app/routes/login.routes')(app, {});
+require('./app/routes/crisis.routes')(app, {});
+ app.listen(port, () => {
     console.log('We are live on ' + port);
 });
