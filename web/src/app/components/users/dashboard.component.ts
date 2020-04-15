@@ -1,12 +1,19 @@
-import { Component, ElementRef, ViewChild, NgZone, OnInit } from '@angular/core';
+import { Component, ElementRef, ViewChild, NgZone, OnInit, TemplateRef } from '@angular/core';
 import { MouseEvent } from '@agm/core';
 import { MapsAPILoader } from '@agm/core';
 import { FormControl } from '@angular/forms';
+
+
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { first } from 'rxjs/operators';
+import { AlertService } from '../../services/alert.service';
+import { CrisisInfoService } from '../../services/crisisInfo.service';
+import { google } from 'google-maps';
 // import { get } from 'scriptjs';
 // declare var klokantech;
 // declare var google: any;
-import { google } from 'google-maps';
-
 
 @Component({
   selector: 'app-dashboard',
@@ -14,6 +21,59 @@ import { google } from 'google-maps';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  modalRef: BsModalRef;
+  saveCrisisInfo: FormGroup;
+  loading = false;
+  submitted = false;
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private _crisisInfoService: CrisisInfoService,
+    private alertService: AlertService,
+    private modalService: BsModalService,
+    private mapsAPILoader: MapsAPILoader,
+    private ngZone: NgZone) {
+    // Current Location
+    if (navigator) {
+      navigator.geolocation.getCurrentPosition(pos => {
+        this.lng = +pos.coords.longitude;
+        this.lat = +pos.coords.latitude;
+      });
+    }
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
+  get f() { return this.saveCrisisInfo.controls; }
+
+  onSubmit() {
+    this.submitted = true;
+
+    // reset alerts on submit
+    this.alertService.clear();
+
+    // stop here if form is invalid
+    if (this.saveCrisisInfo.invalid) {
+      return;
+    }
+
+    this.loading = true;
+    console.log(this.saveCrisisInfo.value);
+    this.modalRef.hide();
+    this._crisisInfoService.add(this.saveCrisisInfo.value)
+      .pipe(first())
+      .subscribe(
+        data => {
+          // this.router.navigate([this.returnUrl]);
+          this.router.navigate(['/dashboard']);
+        },
+        error => {
+          this.alertService.error(error);
+          this.loading = false;
+        });
+  }
   // google maps zoom level
   // tslint:disable-next-line: no-inferrable-types
   zoom: number = 10;
@@ -62,15 +122,16 @@ export class DashboardComponent implements OnInit {
     },
   ];
 
-  constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) {
-    if (navigator) {
-      navigator.geolocation.getCurrentPosition(pos => {
-        this.lng = +pos.coords.longitude;
-        this.lat = +pos.coords.latitude;
-      });
-    }
-  }
   ngOnInit() {
+    this.saveCrisisInfo = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', Validators.required],
+      location: ['', Validators.required],
+      subject: ['', Validators.required],
+      comment: ['', Validators.required]
+
+    });
     // set google maps defaults
     this.zoom = 15;
     /* this.latitude = 39.8282;

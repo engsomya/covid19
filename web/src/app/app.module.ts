@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'; 
 import { ReactiveFormsModule } from '@angular/forms';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { AppRoutingModule } from './app-routing.module';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -24,10 +26,12 @@ import { FooterComponent } from './components/common/footer.component';
 @NgModule({
     imports: [
         BrowserModule,
+        NgbModule,
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
         AppRoutingModule,
+        ModalModule.forRoot(),
         AgmCoreModule.forRoot({
           apiKey: 'AIzaSyCDhjF3LNn2qqYUivCkiyYD8lQMAzihz7I',
           libraries: ['places']
