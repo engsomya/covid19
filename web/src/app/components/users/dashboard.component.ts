@@ -91,7 +91,7 @@ export class DashboardComponent implements OnInit {
       draggable: true,
       color: 'red',
       type: 'Medicine',
-      number: 200
+      number: 0
     },
     {
       lat: 22.64536871990425,

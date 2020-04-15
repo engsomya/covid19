@@ -24,6 +24,8 @@
                                 <div>Help Type: <strong>{{m.type}}</strong></div>
                                 <div>Numbers: <strong>{{m.number}}</strong></div>
                                 <div>Pending since: <strong>2 days</strong></div>
+                                <button class="btn btn-primary btn-sm mt-1" *ngIf="m.number > 0; else elseBlock">Provide help</button><!--Based on the Actor condition will work-->
+                                <ng-template #elseBlock><h5>Served</h5></ng-template>
                             </agm-info-window>
 
                         </agm-marker>
