@@ -9,6 +9,8 @@ var userSchema = new Schema({
     email: String,
     admin: Boolean,
     location: String,
+    latitude: String,
+    longitude: String,
     phone: String,
     actorType: String,
     created_at: Date,
@@ -17,3 +19,4 @@ var userSchema = new Schema({
 
 var User = mongoose.model('User', userSchema,'userData');
 module.exports = User;
+

@@ -37,8 +37,11 @@ export class RegisterComponent implements OnInit {
             lastName: ['', Validators.required],
             email: ['', Validators.required],
             phone: ['', [Validators.required, Validators.minLength(10)]],
-            password: ['', [Validators.required, Validators.minLength(6)]]
-        });
+            password: ['', [Validators.required, Validators.minLength(6)]],
+            actorType: ['admin', Validators.required],
+            location: ['', Validators.required]
+        });       
+        
     }
 
     // convenience getter for easy access to form fields

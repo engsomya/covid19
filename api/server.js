@@ -19,15 +19,16 @@ app.use(function (req, res, next) {
     next();
 
 });
-/*mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/cDatabase', {
     useNewUrlParser: true
+    //useUnifiedTopology: true
 }).then(() => {
     console.log("Successfully connected to the database");        
 }).catch(err => {
     console.log('Could not connect to the database. Exiting now...', err);
     process.exit();
-});*/
+});
 
 require('./app/routes/login.routes')(app, {});
 require('./app/routes/crisis.routes')(app, {});

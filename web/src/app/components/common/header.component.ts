@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   isOpen = false;
+  currentUserInfo:any;
   constructor() { }
 
   ngOnInit(): void {
+    if (localStorage.getItem("currentUser") !== null) {
+      let user = localStorage.getItem('currentUser');
+      this.currentUserInfo = JSON.parse(user);
+    }else{
+      this.currentUserInfo=null;
+    }
+    
+
   }
 
   toggleNavbar() {

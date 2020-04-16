@@ -10,7 +10,10 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngClass]="{ show: isOpen }">
+
             <ul class="navbar-nav ml-auto">
+                <p class="navbar-brand logo-font" *ngIf="currentUserInfo!=null"> Welcome , {{currentUserInfo.firstName}}
+                    <span class="setspacing">| {{currentUserInfo.actorType}}</span></p>
                 <li class="nav-item active">
                     <!-- <a class="nav-link" [routerLink]="['/dashboard']">Dashboard</a> -->
                 </li>
