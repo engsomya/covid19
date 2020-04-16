@@ -13,7 +13,9 @@
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "mongodb": "^2.2.16",
-    "mongoose": "^5.9.7"
+    "mongoose": "^5.9.7",
+    "node-geocoder": "^3.27.0",
+    "node-open-geocoder": "^4.0.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.3"

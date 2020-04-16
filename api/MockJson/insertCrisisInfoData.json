@@ -1,15 +1,1 @@
-{
-    "firstName": "Rack",
-    "lastName": "jackson",
-    "gender": "man",
-    "age": 24,
-    "address": {
-        "streetAddress": "126 Udhna",
-        "city": "san jone",
-        "state": "CA",
-        "postalCode": "394221"
-    },
-    "phoneNumbers": [
-        { "type": "home", "number": "7383627627" }
-    ]
-}
+{"table":[{"_id":"5e98107dc6fec509ec3ce07f","firstName":"sam","lastName":"doe","email":"s@mail.com","subject":"Food crisis","comment":"Urgent basis","location":"Kolkata","longitude":"88.3476023","latitude":"22.5677459","created_at":"2020-04-16T07:59:57.061Z","updated_at":"2020-04-16T07:59:57.061Z"}]}

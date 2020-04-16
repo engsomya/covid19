@@ -7,6 +7,8 @@ var crisisSchema = new Schema({
     lastName: { type: String, required: true },    
     email: String,    
     location: String,
+    latitude:String,
+    longitude:String,
     subject: String,
     comment: String,
     created_at:Date,
