@@ -26,3 +26,28 @@ hr {
 	border-top: 1px solid #f8f8f8;
 	border-bottom: 1px solid rgba(0,0,0,0.2);
 }
+.bg-light {
+    background-color: #0e1b45!important;
+}
+.logo-font {
+	color: white !important;
+}
+.setspacing {
+	word-spacing: 10px;
+    margin-left: 10px;
+}
+.liveupdate {
+	border: 1px solid #d8d3d3;
+    border-radius: 4px;
+    background-color: white;
+    height: 28px;
+    padding: 7px;
+    font-size: xx-small;
+    color: red;
+}
+i {
+	color:white;
+}
+.dropdown-toggle::after {
+	color:white !important;
+}
