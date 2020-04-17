@@ -1,0 +1,9 @@
+.content {
+    padding-top: 72px;
+}
+.scroll {
+    overflow: auto;
+    height: 80%;
+    padding: 0;
+    margin-left: 37px;
+}

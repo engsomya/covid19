@@ -1,6 +1,15 @@
 agm-map {
-    height: 300px;
+    height: 500px;
 }
-markerbox {
-    height: 300px;
+.markerbox {
+    position: absolute;
+    margin-left: 70%;
+    margin-top: 100px;
+}
+.content {
+    padding-top: 72px;
+}
+.mapsearchbox {
+    position: absolute;
+    z-index: 1 !important;
 }
