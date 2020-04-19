@@ -183,6 +183,14 @@ export class DashboardComponent implements OnInit {
   mapReady(event) {
     console.log(event);
     this.setCurrentPosition();
+    event.setOptions({
+      zoomControlOptions: {
+        position: google.maps.ControlPosition.TOP_CENTER
+      },
+      StreetViewControlOptions: {
+        position: google.maps.ControlPosition.TOP_CENTER
+      }
+    });
   }
   private setCurrentPosition() {
     if (navigator.geolocation) {
